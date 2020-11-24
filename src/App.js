@@ -177,12 +177,12 @@ export function App() {
           if (!item) {
             return null;
           }
-          console.log(item);
+          console.log(`/museum/assets/video/crew-${post}.mp4`);
           if (item === 32) {
             return (
               <animated.div key={key} style={props}>
                 <IMGWrapper>
-                  <img src="/assets/img/трубач.jpg" alt="Трубач" height="100%" />
+                  <img src="/museum/assets/img/трубач.jpg" alt="Трубач" height="100%" />
                 </IMGWrapper>
               </animated.div>
             )
