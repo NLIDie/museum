@@ -1,16 +1,16 @@
 .app {
+  position: relative;
   display: flex;
   justify-content: center;
   flex: 0;
 
-  width: 1440px;
-  height: 2560px;
+  width: 1080px;
+  height: 1920px;
 
   margin: 0 auto;
-  padding: 10px;
 
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url('./assets/img/page-background.webp');
+  background-image: url('./assets/page-background.png');
   background-size: 100% 100%;
 }
