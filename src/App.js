@@ -191,7 +191,7 @@ export function App() {
           return (
             <animated.div key={key} style={props}>
               <VideoPlayer
-                src={`/assets/video/crew-${post}.mp4`}
+                src={`/museum/assets/video/crew-${post}.mp4`}
                 onEnded={() => setPost(null)}
               />
             </animated.div>
