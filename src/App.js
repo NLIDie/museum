@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import './app.css';
-
 import { useTransition, animated } from 'react-spring';
 
+import { IconLangRU } from './icon-lang-ru'
+import { IconLangEN } from './icon-lang-en'
+import { IconLangCN } from './icon-lang-cn'
 import { VideoPlayer } from './video-player';
+
+import './app.css';
 
 const IMGWrapper = styled.div`
   position: fixed;
@@ -37,6 +40,49 @@ const PostButton = styled.button`
     display: block;
     box-shadow: inset 0px 0px 50px 50px rgba(0,0,0,0.2), 0 0 12px 10px rgba(0,0,0,0.2);
     /* background-color: rgba(0,0,0,0.025); */
+  }
+`;
+
+const Header = styled.header`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 4px;
+
+  height: 40px;
+  width: 100%;
+`;
+
+const ButtonLang = styled.button`
+  flex: 0;
+  padding: 4px;
+  margin-left: 4px;
+
+  border: none;
+  background: transparent;
+
+  line-height: 0;
+  font-size: 0;
+
+  border-radius: ${props => props.isActive ? '10px' : 0};
+  box-shadow: ${props => props.isActive ? 'inset 0px 0px 20px 20px rgba(0,0,0,0.2), 0 0 6px 5px rgba(0,0,0,0.2)' : 'none'};
+
+  transition: transform 200ms, box-shadow 200ms, border-radius 200ms;
+
+  cursor: pointer;
+
+  &:hover {
+    transform: ${props => props.isActive ? 'none' : 'scale(1.1)'};
+  }
+
+  &:active {
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 20px 20px rgba(0,0,0,0.2), 0 0 6px 5px rgba(0,0,0,0.2);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 `;
 
@@ -120,6 +166,7 @@ const crew = [
 
 export function App() {
   const [post, setPost] = React.useState(null);
+  const [lang, setLang] = React.useState('ru');
 
   const transitions = useTransition(post, null, {
     from: {
@@ -155,6 +202,35 @@ export function App() {
 
   return (
     <main className="app">
+      <Header> 
+        <ButtonLang
+          type="button"
+          isActive={lang === 'ru'}
+          disabled={lang === 'ru'}
+          onClick={() => setLang('ru')}
+        >
+          <IconLangRU />
+        </ButtonLang>
+
+        <ButtonLang
+          type="button"
+          isActive={lang === 'en'}
+          disabled={lang === 'en'}
+          onClick={() => setLang('en')}
+        >
+          <IconLangEN />
+        </ButtonLang>
+
+        <ButtonLang
+          type="button"
+          isActive={lang === 'cn'}
+          disabled={lang === 'cn'}
+          onClick={() => setLang('cn')}
+        >
+          <IconLangCN />
+        </ButtonLang>
+      </Header>
+
       {
         crew.map((person) => (
           <PostButton
@@ -166,7 +242,13 @@ export function App() {
               // backgroundColor: 'rgba(255,255,255, 0.25)',
             }}
             type="button"
-            onClick={() => setPost(person.id)}
+            onClick={() => {
+              setPost(person.id);
+
+              if (person.id === 32) {
+                setTimeout(() => setPost(null), 10000);
+              }
+            }}
             data-id={person.id}
           />
         ))
@@ -177,7 +259,7 @@ export function App() {
           if (!item) {
             return null;
           }
-          console.log(`/museum/assets/video/crew-${post}.mp4`);
+
           if (item === 32) {
             return (
               <animated.div key={key} style={props}>

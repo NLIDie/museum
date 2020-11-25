@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const VideoStyled = styled.video`
-  position: fixed;
+  position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
@@ -25,8 +25,6 @@ export function VideoPlayer(props) {
     <VideoStyled
       className={className}
       style={style}
-      width="100%"
-      height="100%"
       src={src}
       autoPlay={true}
       controls={false}
