@@ -1,0 +1,15 @@
+.app {
+  position: relative;
+  display: flex;
+  flex: 0;
+
+  width: 1080px;
+  height: 1920px;
+
+  margin: 0 auto;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('./assets/crew-bg-2.webp');
+  background-size: contain;
+}
