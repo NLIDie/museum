@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/museum/static/css/main.b86f80fc.chunk.css",
-    "main.js": "/museum/static/js/main.3d723efa.chunk.js",
-    "main.js.map": "/museum/static/js/main.3d723efa.chunk.js.map",
+    "main.css": "/museum/static/css/main.9d431d11.chunk.css",
+    "main.js": "/museum/static/js/main.79d5933f.chunk.js",
+    "main.js.map": "/museum/static/js/main.79d5933f.chunk.js.map",
     "runtime-main.js": "/museum/static/js/runtime-main.b62100a8.js",
     "runtime-main.js.map": "/museum/static/js/runtime-main.b62100a8.js.map",
-    "static/js/2.fbaf795a.chunk.js": "/museum/static/js/2.fbaf795a.chunk.js",
-    "static/js/2.fbaf795a.chunk.js.map": "/museum/static/js/2.fbaf795a.chunk.js.map",
+    "static/js/2.03e55f8d.chunk.js": "/museum/static/js/2.03e55f8d.chunk.js",
+    "static/js/2.03e55f8d.chunk.js.map": "/museum/static/js/2.03e55f8d.chunk.js.map",
     "index.html": "/museum/index.html",
-    "static/css/main.b86f80fc.chunk.css.map": "/museum/static/css/main.b86f80fc.chunk.css.map",
-    "static/js/2.fbaf795a.chunk.js.LICENSE.txt": "/museum/static/js/2.fbaf795a.chunk.js.LICENSE.txt",
+    "static/css/main.9d431d11.chunk.css.map": "/museum/static/css/main.9d431d11.chunk.css.map",
+    "static/js/2.03e55f8d.chunk.js.LICENSE.txt": "/museum/static/js/2.03e55f8d.chunk.js.LICENSE.txt",
     "static/media/app.css": "/museum/static/media/crew-bg-2.5aa929b0.webp",
     "static/media/index.css": "/museum/static/media/pfagoraserifpro-regular.a15de8b2.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.b62100a8.js",
-    "static/js/2.fbaf795a.chunk.js",
-    "static/css/main.b86f80fc.chunk.css",
-    "static/js/main.3d723efa.chunk.js"
+    "static/js/2.03e55f8d.chunk.js",
+    "static/css/main.9d431d11.chunk.css",
+    "static/js/main.79d5933f.chunk.js"
   ]
 }
