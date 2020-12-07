@@ -96,8 +96,8 @@ const createCrew = (
 ) => ({
   id: genNextCrewID(),
   name,
-  width: `${Number(width) * 0.8}px`,
-  height: `${Number(height) * 0.8}px`,
+  width: `${width}px`,
+  height: `${height}px`,
   x,
   y
 })
