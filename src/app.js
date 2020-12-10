@@ -283,7 +283,10 @@ export function App() {
     crew.map((person) => (
       <PostButton
         key={person.name}
-        style={{ ...person.container, backgroundColor: 'rgba(255,255,255, 0.25)' }}
+        style={{
+          ...person.container,
+          // backgroundColor: 'rgba(255,255,255, 0.25)'
+        }}
         type="button"
         onClick={() => handleCrewClick(person.name)}
         onTouchEnd={() => handleCrewClick(person.name)}
