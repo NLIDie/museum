@@ -10,6 +10,17 @@
 
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url('./assets/crew-bg-2.webp');
   background-size: contain;
+}
+
+html[lang='ru'] .app {
+  background-image: url('./assets/crew-bg-ru.webp');
+}
+
+html[lang='en'] .app {
+  background-image: url('./assets/crew-bg-en.webp');
+}
+
+html[lang='cn'] .app {
+  background-image: url('./assets/crew-bg-ru.webp');
 }

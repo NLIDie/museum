@@ -39,7 +39,6 @@ const PostButton = styled.button`
     content: '';
     display: block;
     box-shadow: inset 0px 0px 50px 50px rgba(0,0,0,0.2), 0 0 12px 10px rgba(0,0,0,0.2);
-    /* background-color: rgba(0,0,0,0.025); */
   }
 `;
 
@@ -87,87 +86,102 @@ const ButtonLang = styled.button`
   }
 `;
 
-const makeGenNextID = (id = 0) => () => id++
-const genNextCrewID = makeGenNextID(1);
-const createCrew = (
+const makePosition = (x, y) => ({ x, y })
+
+const makeContainer = (width, height, position) => ({
+  width: `${width}px`,
+  height: `${height}px`,
+  top: `${position.y}%`,
+  left: `${position.x}%`
+});
+
+const makeCrew = (
+  id,
   name,
-  [width, height] = [0, 0],
-  [x, y] = [0, 0]
+  container
 ) => ({
-  id: genNextCrewID(),
+  id,
   name,
-  width,
-  height,
-  x,
-  y
+  container
 })
 
 const crew = [
   // Section 1
-  createCrew('Капитан', ['85px', '170px'], ['41.30%', '3.15%']), // 1
+  makeCrew(1, 'капитан', makeContainer(85, 170, makePosition(41.30, 3.15))),
 
   // Section 2
-  createCrew('Лейтенанты', ['85px', '155px'], ['30%', '12.80%']), // 2
-  createCrew('Секретарь', ['60px', '155px'], ['38%', '12.80%']), // 3
-  createCrew('Унтер-лейтенанты', ['100px', '155px'], ['43.60%', '12.80%']), // 4
-  createCrew('Комиссар', ['60px', '155px'], ['53%', '12.80%']), // 5
+  makeCrew(2, 'лейтенанты', makeContainer(85, 155, makePosition(30, 12.805))),
+  makeCrew(3, 'секретарь', makeContainer(60, 155, makePosition(38, 12.80))),
+  makeCrew(4, 'унтер-лейтенанты', makeContainer(100, 155, makePosition(43.60, 12.80))),
+  makeCrew(5, 'комиссар', makeContainer(60, 155, makePosition(53, 12.80))),
 
   // Section 3
-  createCrew('Констапель', ['85px', '155px'], ['30%', '22.10%']), // 6
-  createCrew('Мичманы', ['88px', '155px'], ['38%', '22.10%']), // 7
-  createCrew('Лекарь', ['60px', '155px'], ['46.20%', '22.10%']), // 8
-  createCrew('Священник', ['60px', '155px'], ['53%', '22.10%']), // 9
+  makeCrew(6, 'констапель', makeContainer(85, 155, makePosition(30, 22.10))),
+  makeCrew(7, 'мичманы', makeContainer(88, 155, makePosition(38, 22.10))),
+  makeCrew(8, 'лекарь', makeContainer(60, 155, makePosition(46.20, 22.10))),
+  makeCrew(9, 'священник', makeContainer(60, 155, makePosition(53, 22.10))),
 
   // Section 4
-  createCrew('Шхипор', ['69px', '155px'], ['31%', '31.50%']), // 10
-  createCrew('Штюрман', ['93px', '155px'], ['37.5%', '31.50%']), // 11
-  createCrew('Боцман', ['65px', '155px'], ['46.45%', '31.50%']), // 12
-  createCrew('Шхиман', ['65px', '155px'], ['53.10%', '31.50%']), // 13
+  makeCrew(10, 'шхипор', makeContainer(69, 155, makePosition(31, 31.50))),
+  makeCrew(11, 'штюрман', makeContainer(93, 155, makePosition(37.5, 31.50))),
+  makeCrew(12, 'боцман', makeContainer(65, 155, makePosition(46.45, 31.50))),
+  makeCrew(13, 'шхиман', makeContainer(65, 155, makePosition(53.10, 31.50))),
 
   // Section 5
-  createCrew('Подштюрманы', ['95px', '160px'], ['23.20%', '40.50%']), // 14
-  createCrew('Подшхипор', ['67px', '160px'], ['31.60%', '40.50%']), // 15
-  createCrew('Боцманматы', ['90px', '160px'], ['37.90%', '40.50%']), // 16
-  createCrew('Шхиманматы', ['79px', '160px'], ['46%', '40.50%']), // 17
-  createCrew('Квартирмейстеры', ['126px', '160px'], ['53.3%', '40.50%']), // 18
+  makeCrew(14, 'подштюрманы', makeContainer(95, 160, makePosition(23.20, 40.50))),
+  makeCrew(15, 'подшхипор', makeContainer(67, 160, makePosition(31.60, 40.50))),
+  makeCrew(16, 'боцманматы', makeContainer(90, 160, makePosition(37.90, 40.50))),
+  makeCrew(17, 'шхиманматы', makeContainer(79, 160, makePosition(46, 40.50))),
+  makeCrew(18, 'квартирмейстеры', makeContainer(126, 160, makePosition(53.30, 40.50))),
 
   // Section 6
-  createCrew('Сержант', ['60px', '155px'], ['8.4%', '51%']), // 19
-  createCrew('Подконстапели', ['80px', '155px'], ['14%', '51%']), // 20
-  createCrew('Капрал', ['60px', '155px'], ['21.40%', '51%']), // 21
-  createCrew('Канонир 1', ['45px', '140px'], ['46.5%', '51%']), // 22
-  createCrew('Канонир 2', ['45px', '140px'], ['50.65%', '51%']), // 23
-  createCrew('Канонир 3', ['45px', '140px'], ['54.8%', '51%']), // 24
+  makeCrew(19, 'сержант', makeContainer(60, 155, makePosition(8.4, 51))),
+  makeCrew(20, 'подконстапели', makeContainer(80, 155, makePosition(14, 51))),
+  makeCrew(21, 'капрал', makeContainer(60, 155, makePosition(21.4, 51))),
+  makeCrew(22, 'канонир-1', makeContainer(45, 140, makePosition(46.5, 51))),
+  makeCrew(23, 'канонир-2', makeContainer(45, 140, makePosition(50.65, 51))),
+  makeCrew(24, 'канонир-3', makeContainer(45, 140, makePosition(54.8, 51))),
 
   // Section 7
-  createCrew('Матрос 01', ['45px', '140px'], ['26.7%', '65.3%']), // 25
-  createCrew('Матрос 02', ['45px', '140px'], ['30.8%', '65.3%']), // 26
-  createCrew('Матрос 03', ['45px', '140px'], ['35.0%', '65.3%']), // 27
-  createCrew('Кают юнги', ['45px', '140px'], ['69.7%', '65.3%']), // 28
-  createCrew('Дек юнги', ['45px', '140px'], ['73.9%', '65.3%']), // 29
+  makeCrew(25, 'матрос-1', makeContainer(45, 140, makePosition(26.7, 65.3))),
+  makeCrew(26, 'матрос-2', makeContainer(45, 140, makePosition(30.8, 65.3))),
+  makeCrew(27, 'матрос-3', makeContainer(45, 140, makePosition(35, 65.3))),
+  makeCrew(28, 'кают-юнги', makeContainer(45, 140, makePosition(69.7, 65.3))),
+  makeCrew(29, 'дек-юнги', makeContainer(45, 140, makePosition(73.9, 65.3))),
 
   // Section 8
-  createCrew('Караульный солдат', ['140px', '205px'], ['15%', '76.2%']), // 30
-  createCrew('Солдаты', ['520px', '246px'], ['28%', '74%']), // 31
+  makeCrew(30, 'караульные-солдаты', makeContainer(140, 205, makePosition(15, 76.2))),
+  makeCrew(31, 'солдаты', makeContainer(520, 246, makePosition(28, 74))),
 
   // Section 9
-  createCrew('Трубачи', ['82px', '180px'], ['9%', '87.7%']), // 32
-  createCrew('Лекарские ученики', ['75px', '180px'], ['16.6%', '87.7%']), // 33
-  createCrew('Писарь', ['50px', '180px'], ['23.5%', '87.7%']), // 34
-  createCrew('Добрый плотник', ['52px', '180px'], ['29%', '87.7%']), // 35
-  createCrew('Плотники', ['74px', '180px'], ['34%', '87.7%']), // 36
-  createCrew('Купор', ['48px', '180px'], ['40.8%', '87.7%']), // 37
-  createCrew('Ундер купор', ['60px', '180px'], ['45.8%', '87.7%']), // 38
-  createCrew('Конопатчики', ['90px', '180px'], ['51.4%', '87.7%']), // 39
-  createCrew('Парусные ученики', ['65px', '180px'], ['59.7%', '87.7%']), // 40
-  createCrew('Слесарь', ['48px', '180px'], ['65.7%', '87.7%']), // 41
-  createCrew('Повары', ['72px', '180px'], ['70.5%', '87.7%']), // 42
-  createCrew('Профос', ['45px', '180px'], ['77.1%', '87.7%']) // 43
+  makeCrew(32, 'трубачи', makeContainer(82, 180, makePosition(9, 87.7))),
+  makeCrew(33, 'лекарские-ученики', makeContainer(75, 180, makePosition(16.6, 87.7))),
+  makeCrew(34, 'писарь', makeContainer(50, 180, makePosition(23.5, 87.7))),
+  makeCrew(35, 'добрый-плотник', makeContainer(52, 180, makePosition(29, 87.7))),
+  makeCrew(36, 'плотники', makeContainer(74, 180, makePosition(34, 87.7))),
+  makeCrew(37, 'купор', makeContainer(48, 180, makePosition(40.8, 87.7))),
+  makeCrew(38, 'ундер-купор', makeContainer(60, 180, makePosition(45.8, 87.7))),
+  makeCrew(39, 'конопатчики', makeContainer(90, 180, makePosition(51.4, 87.7))),
+  makeCrew(40, 'парусные-ученики', makeContainer(65, 180, makePosition(59.7, 87.7))),
+  makeCrew(41, 'слесарь', makeContainer(48, 180, makePosition(65.7, 87.7))),
+  makeCrew(42, 'повары', makeContainer(72, 180, makePosition(70.5, 87.7))),
+  makeCrew(43, 'профос', makeContainer(45, 180, makePosition(77.1, 87.7))),
 ];
+
+const langs = [
+  'ru',
+  'en'
+  // 'cn'
+];
+const langFlagMapping = {
+  'ru': <IconLangRU />,
+  'en': <IconLangEN />,
+  'cn': <IconLangCN />
+};
 
 export function App() {
   const [post, setPost] = React.useState(null);
-  const [lang, setLang] = React.useState('ru');
+  const [currentLang, setCurrentLang] = React.useState('ru');
 
   const transitions = useTransition(post, null, {
     from: {
@@ -201,87 +215,119 @@ export function App() {
     }
   })
 
-  return (
-    <main className="app">
-      <FlagsContainer>
-        <ButtonLang
-          type="button"
-          isActive={lang === 'ru'}
-          disabled={lang === 'ru'}
-          onClick={() => setLang('ru')}
-        >
-          <IconLangRU />
-        </ButtonLang>
+  React.useEffect(() => {
+    const htmlElement = document.querySelector('html');
 
-        <ButtonLang
-          type="button"
-          isActive={lang === 'en'}
-          disabled={lang === 'en'}
-          onClick={() => setLang('en')}
-        >
-          <IconLangEN />
-        </ButtonLang>
+    if (htmlElement !== null) {
+      htmlElement.setAttribute('lang', currentLang);
+    }
+  }, [currentLang])
 
-        <ButtonLang
-          type="button"
-          isActive={lang === 'cn'}
-          disabled={lang === 'cn'}
-          onClick={() => setLang('cn')}
-        >
-          <IconLangCN />
-        </ButtonLang>
-      </FlagsContainer>
+  React.useEffect(() => {
+    const stop = (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+    };
 
+    const stopTouch = (event) => {
+      if (event.changedTouches > 1) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+    };
+
+    document.body.addEventListener('contextmenu', stop);
+    document.body.addEventListener('touchmove', stop);
+    document.body.addEventListener('touchcancel', stop);
+    document.body.addEventListener('touchstart', stop);
+
+    document.body.addEventListener('touchend', stopTouch);
+
+    return () => {
+      document.body.removeEventListener('contextmenu', stop);
+      document.body.removeEventListener('touchmove', stop);
+      document.body.removeEventListener('touchcancel', stop);
+      document.body.removeEventListener('touchstart', stop);
+
+      document.body.removeEventListener('touchend', stopTouch);
+    }
+  }, []);
+
+  const handleCrewClick = React.useCallback((name) => {
+    setPost(name);
+
+    if (name === 'трубачи') {
+      setTimeout(() => setPost(null), 10000);
+    }
+  }, [setPost]);
+
+  const memoRenderLangFlags = React.useMemo(() => (
+    <FlagsContainer>
       {
-        crew.map((person) => (
-          <PostButton
-            style={{
-              width: person.width,
-              height: person.height,
-              top: person.y,
-              left: person.x,
-              // backgroundColor: 'rgba(255,255,255, 0.25)',
-            }}
+        langs.map((lang) => (
+          <ButtonLang
+            key={lang}
             type="button"
-            onClick={() => {
-              setPost(person.id);
-
-              if (person.id === 32) {
-                setTimeout(() => setPost(null), 10000);
-              }
-            }}
-            data-id={person.id}
-          />
+            isActive={currentLang === lang}
+            disabled={currentLang === lang}
+            onClick={() => setCurrentLang(lang)}
+          >
+            {langFlagMapping[lang]}
+          </ButtonLang>
         ))
       }
+    </FlagsContainer>
+  ), [currentLang, setCurrentLang]);
 
-      {
-        transitions.map(({ item, key, props }) => {
-          if (!item) {
-            return null;
-          }
+  const memoRenderCrewButtons = React.useMemo(() => (
+    crew.map((person) => (
+      <PostButton
+        key={person.name}
+        style={{ ...person.container, backgroundColor: 'rgba(255,255,255, 0.25)' }}
+        type="button"
+        onClick={() => handleCrewClick(person.name)}
+        onTouchEnd={() => handleCrewClick(person.name)}
+      />
+    ))
+  ), [handleCrewClick]);
 
-          if (item === 32) {
-            return (
-              <animated.div key={key} style={props}>
-                <IMGWrapper onClick={() => setPost(null)}>
-                  <img src="/museum/assets/img/трубач.jpg" alt="Трубач" height="100%" />
-                </IMGWrapper>
-              </animated.div>
-            )
-          }
-
-          return (
-            <animated.div key={key} style={props}>
-              <VideoPlayer
-                src={`/museum/assets/video/crew-${post}.mp4`}
-                onEnded={() => setPost(null)}
-                onClick={() => setPost(null)}
-              />
-            </animated.div>
-          )
-        })
+  const memoRenderVideo = React.useMemo(() => (
+    transitions.map(({ item, key, props }) => {
+      if (!item) {
+        return null;
       }
+
+      if (item === 'трубачи') {
+        return (
+          <animated.div key={key} style={props}>
+            <IMGWrapper onClick={() => setPost(null)} onTouchEnd={() => setPost(null)}>
+              <img
+                src={`/museum/assets/img/${currentLang}/трубачи.webp`}
+                alt="Трубачи"
+                height="100%"
+              />
+            </IMGWrapper>
+          </animated.div>
+        )
+      }
+
+      return (
+        <animated.div key={key} style={props}>
+          <VideoPlayer
+            src={`/museum/assets/video/${currentLang}/${post}.webm`}
+            onEnded={() => setPost(null)}
+            onClick={() => setPost(null)}
+          />
+        </animated.div>
+      )
+    })
+  ), [transitions, currentLang, post]);
+
+  return (
+    <main className="app">
+      {memoRenderLangFlags}
+      {memoRenderCrewButtons}
+      {memoRenderVideo}
     </main>
   );
 }
