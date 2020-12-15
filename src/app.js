@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { useTransition, animated } from 'react-spring';
 
-import { IconLangRU } from './icon-lang-ru'
-import { IconLangEN } from './icon-lang-en'
-import { IconLangCN } from './icon-lang-cn'
+import { IconLangRU } from './icon-lang-ru';
+import { IconLangEN } from './icon-lang-en';
+import { IconLangCN } from './icon-lang-cn';
 import { VideoPlayer } from './video-player';
 
 import './app.css';
@@ -38,7 +38,7 @@ const PostButton = styled.button`
     bottom: 0;
     content: '';
     display: block;
-    box-shadow: inset 0px 0px 50px 50px rgba(0,0,0,0.2), 0 0 12px 10px rgba(0,0,0,0.2);
+    box-shadow: inset 0px 0px 50px 50px rgba(0, 0, 0, 0.2), 0 0 12px 10px rgba(0, 0, 0, 0.2);
   }
 `;
 
@@ -65,20 +65,23 @@ const ButtonLang = styled.button`
   line-height: 0;
   font-size: 0;
 
-  border-radius: ${props => props.isActive ? '10px' : 0};
-  box-shadow: ${props => props.isActive ? 'inset 0px 0px 20px 20px rgba(0,0,0,0.2), 0 0 6px 5px rgba(0,0,0,0.2)' : 'none'};
+  border-radius: ${(props) => (props.isActive ? '10px' : 0)};
+  box-shadow: ${(props) =>
+    props.isActive
+      ? 'inset 0px 0px 20px 20px rgba(0,0,0,0.2), 0 0 6px 5px rgba(0,0,0,0.2)'
+      : 'none'};
 
   transition: transform 200ms, box-shadow 200ms, border-radius 200ms;
 
   cursor: pointer;
 
   &:hover {
-    transform: ${props => props.isActive ? 'none' : 'scale(1.1)'};
+    transform: ${(props) => (props.isActive ? 'none' : 'scale(1.1)')};
   }
 
   &:active {
     border-radius: 10px;
-    box-shadow: inset 0px 0px 20px 20px rgba(0,0,0,0.2), 0 0 6px 5px rgba(0,0,0,0.2);
+    box-shadow: inset 0px 0px 20px 20px rgba(0, 0, 0, 0.2), 0 0 6px 5px rgba(0, 0, 0, 0.2);
   }
 
   &:disabled {
@@ -86,53 +89,49 @@ const ButtonLang = styled.button`
   }
 `;
 
-const makePosition = (x, y) => ({ x, y })
+const makePosition = (x, y) => ({ x, y });
 
 const makeContainer = (width, height, position) => ({
   width: `${width}px`,
   height: `${height}px`,
   top: `${position.y}%`,
-  left: `${position.x}%`
+  left: `${position.x}%`,
 });
 
-const makeCrew = (
+const makeCrew = (id, name, container) => ({
   id,
   name,
-  container
-) => ({
-  id,
-  name,
-  container
-})
+  container,
+});
 
 const crew = [
   // Section 1
-  makeCrew(1, 'капитан', makeContainer(85, 170, makePosition(41.30, 3.15))),
+  makeCrew(1, 'капитан', makeContainer(85, 170, makePosition(41.3, 3.15))),
 
   // Section 2
   makeCrew(2, 'лейтенанты', makeContainer(85, 155, makePosition(30, 12.805))),
-  makeCrew(3, 'секретарь', makeContainer(60, 155, makePosition(38, 12.80))),
-  makeCrew(4, 'унтер-лейтенанты', makeContainer(100, 155, makePosition(43.60, 12.80))),
-  makeCrew(5, 'комиссар', makeContainer(60, 155, makePosition(53, 12.80))),
+  makeCrew(3, 'секретарь', makeContainer(60, 155, makePosition(38, 12.8))),
+  makeCrew(4, 'унтер-лейтенанты', makeContainer(100, 155, makePosition(43.6, 12.8))),
+  makeCrew(5, 'комиссар', makeContainer(60, 155, makePosition(53, 12.8))),
 
   // Section 3
-  makeCrew(6, 'констапель', makeContainer(85, 155, makePosition(30, 22.10))),
-  makeCrew(7, 'мичманы', makeContainer(88, 155, makePosition(38, 22.10))),
-  makeCrew(8, 'лекарь', makeContainer(60, 155, makePosition(46.20, 22.10))),
-  makeCrew(9, 'священник', makeContainer(60, 155, makePosition(53, 22.10))),
+  makeCrew(6, 'констапель', makeContainer(85, 155, makePosition(30, 22.1))),
+  makeCrew(7, 'мичманы', makeContainer(88, 155, makePosition(38, 22.1))),
+  makeCrew(8, 'лекарь', makeContainer(60, 155, makePosition(46.2, 22.1))),
+  makeCrew(9, 'священник', makeContainer(60, 155, makePosition(53, 22.1))),
 
   // Section 4
-  makeCrew(10, 'шхипор', makeContainer(69, 155, makePosition(31, 31.50))),
-  makeCrew(11, 'штюрман', makeContainer(93, 155, makePosition(37.5, 31.50))),
-  makeCrew(12, 'боцман', makeContainer(65, 155, makePosition(46.45, 31.50))),
-  makeCrew(13, 'шхиман', makeContainer(65, 155, makePosition(53.10, 31.50))),
+  makeCrew(10, 'шхипор', makeContainer(69, 155, makePosition(31, 31.5))),
+  makeCrew(11, 'штюрман', makeContainer(93, 155, makePosition(37.5, 31.5))),
+  makeCrew(12, 'боцман', makeContainer(65, 155, makePosition(46.45, 31.5))),
+  makeCrew(13, 'шхиман', makeContainer(65, 155, makePosition(53.1, 31.5))),
 
   // Section 5
-  makeCrew(14, 'подштюрманы', makeContainer(95, 160, makePosition(23.20, 40.50))),
-  makeCrew(15, 'подшхипор', makeContainer(67, 160, makePosition(31.60, 40.50))),
-  makeCrew(16, 'боцманматы', makeContainer(90, 160, makePosition(37.90, 40.50))),
-  makeCrew(17, 'шхиманматы', makeContainer(79, 160, makePosition(46, 40.50))),
-  makeCrew(18, 'квартирмейстеры', makeContainer(126, 160, makePosition(53.30, 40.50))),
+  makeCrew(14, 'подштюрманы', makeContainer(95, 160, makePosition(23.2, 40.5))),
+  makeCrew(15, 'подшхипор', makeContainer(67, 160, makePosition(31.6, 40.5))),
+  makeCrew(16, 'боцманматы', makeContainer(90, 160, makePosition(37.9, 40.5))),
+  makeCrew(17, 'шхиманматы', makeContainer(79, 160, makePosition(46, 40.5))),
+  makeCrew(18, 'квартирмейстеры', makeContainer(126, 160, makePosition(53.3, 40.5))),
 
   // Section 6
   makeCrew(19, 'сержант', makeContainer(60, 155, makePosition(8.4, 51))),
@@ -168,15 +167,11 @@ const crew = [
   makeCrew(43, 'профос', makeContainer(45, 180, makePosition(77.1, 87.7))),
 ];
 
-const langs = [
-  'ru',
-  'en'
-  // 'cn'
-];
+const langs = ['ru', 'en', 'ch'];
 const langFlagMapping = {
-  'ru': <IconLangRU />,
-  'en': <IconLangEN />,
-  'cn': <IconLangCN />
+  ru: <IconLangRU />,
+  en: <IconLangEN />,
+  ch: <IconLangCN />,
 };
 
 export function App() {
@@ -211,9 +206,9 @@ export function App() {
       transform: `scale(0)`,
     },
     config: {
-      duration: 500
-    }
-  })
+      duration: 500,
+    },
+  });
 
   React.useEffect(() => {
     const htmlElement = document.querySelector('html');
@@ -221,7 +216,7 @@ export function App() {
     if (htmlElement !== null) {
       htmlElement.setAttribute('lang', currentLang);
     }
-  }, [currentLang])
+  }, [currentLang]);
 
   React.useEffect(() => {
     const stop = (event) => {
@@ -250,21 +245,24 @@ export function App() {
       document.body.removeEventListener('touchstart', stop);
 
       document.body.removeEventListener('touchend', stopTouch);
-    }
+    };
   }, []);
 
-  const handleCrewClick = React.useCallback((name) => {
-    setPost(name);
+  const handleCrewClick = React.useCallback(
+    (name) => {
+      setPost(name);
 
-    if (name === 'трубачи') {
-      setTimeout(() => setPost(null), 10000);
-    }
-  }, [setPost]);
+      if (name === 'трубачи') {
+        setTimeout(() => setPost(null), 10000);
+      }
+    },
+    [setPost]
+  );
 
-  const memoRenderLangFlags = React.useMemo(() => (
-    <FlagsContainer>
-      {
-        langs.map((lang) => (
+  const memoRenderLangFlags = React.useMemo(
+    () => (
+      <FlagsContainer>
+        {langs.map((lang) => (
           <ButtonLang
             key={lang}
             type="button"
@@ -274,57 +272,62 @@ export function App() {
           >
             {langFlagMapping[lang]}
           </ButtonLang>
-        ))
-      }
-    </FlagsContainer>
-  ), [currentLang, setCurrentLang]);
+        ))}
+      </FlagsContainer>
+    ),
+    [currentLang, setCurrentLang]
+  );
 
-  const memoRenderCrewButtons = React.useMemo(() => (
-    crew.map((person) => (
-      <PostButton
-        key={person.name}
-        style={{
-          ...person.container,
-          // backgroundColor: 'rgba(255,255,255, 0.25)'
-        }}
-        type="button"
-        onClick={() => handleCrewClick(person.name)}
-        onTouchEnd={() => handleCrewClick(person.name)}
-      />
-    ))
-  ), [handleCrewClick]);
+  const memoRenderCrewButtons = React.useMemo(
+    () =>
+      crew.map((person) => (
+        <PostButton
+          key={person.name}
+          style={{
+            ...person.container,
+            // backgroundColor: 'rgba(255,255,255, 0.25)'
+          }}
+          type="button"
+          onClick={() => handleCrewClick(person.name)}
+          onTouchEnd={() => handleCrewClick(person.name)}
+        />
+      )),
+    [handleCrewClick]
+  );
 
-  const memoRenderVideo = React.useMemo(() => (
-    transitions.map(({ item, key, props }) => {
-      if (!item) {
-        return null;
-      }
+  const memoRenderVideo = React.useMemo(
+    () =>
+      transitions.map(({ item, key, props }) => {
+        if (!item) {
+          return null;
+        }
 
-      if (item === 'трубачи') {
+        if (item === 'трубачи') {
+          return (
+            <animated.div key={key} style={props}>
+              <IMGWrapper onClick={() => setPost(null)} onTouchEnd={() => setPost(null)}>
+                <img
+                  src={`/museum/assets/img/${currentLang}/трубачи.webp`}
+                  alt="Трубачи"
+                  height="100%"
+                />
+              </IMGWrapper>
+            </animated.div>
+          );
+        }
+
         return (
           <animated.div key={key} style={props}>
-            <IMGWrapper onClick={() => setPost(null)} onTouchEnd={() => setPost(null)}>
-              <img
-                src={`/museum/assets/img/${currentLang}/трубачи.webp`}
-                alt="Трубачи"
-                height="100%"
-              />
-            </IMGWrapper>
+            <VideoPlayer
+              src={`/museum/assets/video/${currentLang}/${post}.webm`}
+              onEnded={() => setPost(null)}
+              onClick={() => setPost(null)}
+            />
           </animated.div>
-        )
-      }
-
-      return (
-        <animated.div key={key} style={props}>
-          <VideoPlayer
-            src={`/museum/assets/video/${currentLang}/${post}.webm`}
-            onEnded={() => setPost(null)}
-            onClick={() => setPost(null)}
-          />
-        </animated.div>
-      )
-    })
-  ), [transitions, currentLang, post]);
+        );
+      }),
+    [transitions, currentLang, post]
+  );
 
   return (
     <main className="app">
