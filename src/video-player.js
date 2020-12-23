@@ -10,16 +10,10 @@ const VideoStyled = styled.video`
   right: 0;
   bottom: 0;
   background-color: black;
-`
+`;
 
 export function VideoPlayer(props) {
-  const {
-    className,
-    src,
-    onEnded,
-    onClick,
-    style
-  } = props;
+  const { className, src, onEnded, onClick, style } = props;
 
   return (
     <VideoStyled
@@ -29,8 +23,8 @@ export function VideoPlayer(props) {
       autoPlay={true}
       controls={false}
       onEnded={onEnded}
-      onClick={onClick}
+      // onClick={onClick}
       onTouchEnd={onClick}
     />
-  )
+  );
 }

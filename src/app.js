@@ -232,18 +232,16 @@ export function App() {
     };
 
     document.body.addEventListener('contextmenu', stop);
-    document.body.addEventListener('touchmove', stop);
-    document.body.addEventListener('touchcancel', stop);
-    document.body.addEventListener('touchstart', stop);
 
+    document.body.addEventListener('touchcancel', stopTouch);
+    document.body.addEventListener('touchstart', stopTouch);
     document.body.addEventListener('touchend', stopTouch);
 
     return () => {
       document.body.removeEventListener('contextmenu', stop);
-      document.body.removeEventListener('touchmove', stop);
-      document.body.removeEventListener('touchcancel', stop);
-      document.body.removeEventListener('touchstart', stop);
 
+      document.body.removeEventListener('touchcancel', stopTouch);
+      document.body.removeEventListener('touchstart', stopTouch);
       document.body.removeEventListener('touchend', stopTouch);
     };
   }, []);
@@ -268,7 +266,8 @@ export function App() {
             type="button"
             isActive={currentLang === lang}
             disabled={currentLang === lang}
-            onClick={() => setCurrentLang(lang)}
+            onTouchEnd={() => setCurrentLang(lang)}
+            // onClick={() => setCurrentLang(lang)}
           >
             {langFlagMapping[lang]}
           </ButtonLang>
@@ -284,12 +283,12 @@ export function App() {
         <PostButton
           key={person.name}
           style={{
-            ...person.container,
+            ...person.container
             // backgroundColor: 'rgba(255,255,255, 0.25)'
           }}
           type="button"
-          onClick={() => handleCrewClick(person.name)}
           onTouchEnd={() => handleCrewClick(person.name)}
+          // onClick={() => handleCrewClick(person.name)}
         />
       )),
     [handleCrewClick]
@@ -305,7 +304,10 @@ export function App() {
         if (item === 'трубачи') {
           return (
             <animated.div key={key} style={props}>
-              <IMGWrapper onClick={() => setPost(null)} onTouchEnd={() => setPost(null)}>
+              <IMGWrapper
+                onTouchEnd={() => setPost(null)}
+                // onClick={() => setPost(null)}
+              >
                 <img
                   src={`/museum/assets/img/${currentLang}/трубачи.webp`}
                   alt="Трубачи"
@@ -319,7 +321,7 @@ export function App() {
         return (
           <animated.div key={key} style={props}>
             <VideoPlayer
-              src={`/museum/assets/video/${currentLang}/${post}.webm`}
+              src={post ? `/museum/assets/video/${currentLang}/${post}.mp4` : undefined}
               onEnded={() => setPost(null)}
               onClick={() => setPost(null)}
             />
